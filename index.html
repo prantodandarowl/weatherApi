@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Temperature Hot</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background: url(images/bg-image.jpg) no-repeat;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form class="col-md-6 m-auto py-5">
+            <div class="input-group mb-3">
+                <input type="text" id="cityName" class="form-control" placeholder="Enter a location for Weather ...">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-danger" id="search-btn">Search</button>
+                </div>
+            </div>
+        </form>
+        <div class="weather-status text-white text-center">
+            <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
+            <h1 id="cityNameIn">Dhaka</h1>
+            <h3 > <span id="tempo">38.06</span> &deg;f</h3>
+            <h1 class="lead" id="state">Clouds</h1>
+        </div>
+    </div>
+
+
+
+    <script>
+
+
+
+
+        var cityName = document.getElementById("cityName");
+        var search = document.getElementById("search-btn");
+        var temparaure = document.getElementById("tempo");
+        var citynamein = document.getElementById("cityNameIn");
+        var state = document.getElementById("state");
+
+
+        
+
+
+
+
+        search.addEventListener("click", function () {
+
+            fetch('http://api.openweathermap.org/data/2.5/weather?q='+cityName.value+'&appid=6823e6527e536fac53f922d19e4d598b')
+
+
+                .then(res => res.json())
+                .then(data => {
+                    let tempokelvin = data.main.temp;
+                    let tempodecemal=tempokelvin-273;
+                    let tempo= tempodecemal.toFixed(2);
+                    let sky=data.weather[0].main;
+                    citynamein.innerText=cityName.value;
+                    temparaure.innerText=tempo;
+                    state.innerText=sky
+                    
+                    
+                })
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
